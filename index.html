@@ -46,6 +46,25 @@ h1,h2,h3,p{margin:0}
 .promo{background:var(--fg);color:var(--bg);font-size:13px}
 .promo .wrap{display:flex;justify-content:center;gap:8px 20px;flex-wrap:wrap;padding-block:8px;text-align:center}
 .promo b{font-weight:600}
+/* dinamismo */
+.promo .rot{display:grid;min-height:1.5em}
+.promo .rot>span{grid-area:1/1;opacity:0;transform:translateY(6px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.promo .rot>span.on{opacity:1;transform:none}
+html.rvjs .rv{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+html.rvjs .rv.in{opacity:1;transform:none}
+.card .tile img{transition:transform .5s var(--ease)}
+@media (hover:hover){.card:hover .tile img{transform:scale(1.045)}.card{transition:transform .3s var(--ease)}.card:hover{transform:translateY(-3px)}}
+.tgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.tcard{margin:0;position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 20px 18px;box-shadow:var(--shadow);overflow:hidden}
+.tcard::after{content:"";position:absolute;inset:auto -30px -30px auto;width:110px;height:110px;border-radius:50%;background:var(--shell);opacity:.35}
+.tq{font:italic 500 64px/0.6 var(--display);color:var(--coral);height:26px}
+.tcard blockquote{margin:0 0 16px;font:italic 500 21px/1.35 var(--display);color:var(--fg);position:relative;z-index:1}
+.tcard figcaption{display:flex;gap:10px;align-items:center;position:relative;z-index:1}
+.tav{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font-weight:700}
+.tcard figcaption b{display:block;font-weight:600}
+.tcard figcaption small{color:var(--muted);font-size:13px}
+@media (prefers-reduced-motion:reduce){html.rvjs .rv{opacity:1;transform:none;transition:none}.promo .rot>span{transition:none}.card .tile img,.card{transition:none}}
+
 
 /* cabecera */
 header.top{position:static;top:env(safe-area-inset-top,0px);z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
@@ -340,7 +359,7 @@ body.lock{overflow:hidden}
 }
 </style>
 
-<div class="promo"><div class="wrap"><span>Delivery gratis en compras mayores a <b>S/ 300</b> · Descuento llevando <b>más de 3 prendas</b></span></div></div>
+<div class="promo"><div class="wrap"><div class="rot" aria-live="polite"><span class="on">Delivery gratis en compras mayores a <b>S/ 300</b></span><span>Descuento llevando <b>más de 3 prendas</b></span><span>Paga con <b>Yape o Plin</b> · Pedidos por WhatsApp</span></div></div></div>
 
 <header class="top"><div class="wrap">
   <div class="lead2"><button class="menubtn press" id="menubtn" type="button" aria-label="Abrir menú de categorías" aria-expanded="false" aria-controls="mega"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menú</span></button><a class="brand" href="#" aria-label="Lace & Waves, inicio">Lace <span>&amp;</span> Waves</a></div>
@@ -379,6 +398,13 @@ body.lock{overflow:hidden}
     <select class="sortsel" id="sort" aria-label="Ordenar"><option value="new">Novedades</option><option value="asc">Precio: menor a mayor</option><option value="desc">Precio: mayor a menor</option></select>
   </div>
   <div class="grid" id="grid"></div>
+</section>
+
+<section class="sec wrap" id="testimonios" aria-labelledby="h-test">
+  <div class="sec-head"><div><h2 id="h-test">Lo que dicen nuestras clientas</h2><p>Mensajes reales que nos llegan por WhatsApp después de recibir su pedido.</p></div></div>
+  <div class="tgrid">
+    <figure class="tcard rv"><div class="tq" aria-hidden="true">“</div><blockquote>Muchas gracias, está súper linda la capita 💗</blockquote><figcaption><span class="tav" aria-hidden="true">R</span><span><b>Romina M.</b><small>Callao · Compró una capa</small></span></figcaption></figure>
+  </div>
 </section>
 
 <section class="sec wrap" id="envios" aria-labelledby="h-how">
@@ -1003,7 +1029,7 @@ function syncHash(){
 }
 function applyHash(){
   var h = (location.hash||"").slice(1).toLowerCase(); if(!h) return false;
-  var SECS = {envios:"envios",entregas:"envios",pago:"envios",pagos:"envios",comprar:"envios"};
+  var SECS = {testimonios:"testimonios",opiniones:"testimonios",envios:"envios",entregas:"envios",pago:"envios",pagos:"envios",comprar:"envios"};
   if(SECS[h]){ [350,1200].forEach(function(ms){ setTimeout(function(){ var el=$(SECS[h]); if(el) el.scrollIntoView({block:"start"}); },ms); }); return false; }
   h = ALIAS[h] || h;
   var found = false;
@@ -1300,6 +1326,18 @@ $("sort").addEventListener("change", function(){ state.sort = this.value; grid()
 front(); chips(); grid(); badge(); favBadge(); renderTable();
 if(applyHash()) setTimeout(toCatalog, 350);
 hashReady = true;
+(function(){
+  var rot=document.querySelectorAll(".promo .rot>span"),ri=0;
+  if(rot.length>1) setInterval(function(){ rot[ri].classList.remove("on"); ri=(ri+1)%rot.length; rot[ri].classList.add("on"); },3800);
+  if(!("IntersectionObserver" in window)) return;
+  try{ if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; }catch(e){}
+  document.documentElement.classList.add("rvjs");
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); },{rootMargin:"0px 0px -6% 0px",threshold:0.08});
+  function scan(root){ Array.prototype.forEach.call((root||document).querySelectorAll(".sec-head,.step,.pol>div,.tcard,.cattiles>*,details"),function(el){ if(!el.classList.contains("rv")){ el.classList.add("rv"); } if(!el.classList.contains("in")) io.observe(el); }); }
+  scan();
+  setTimeout(function(){ document.querySelectorAll(".rv:not(.in)").forEach(function(el){ var r=el.getBoundingClientRect(); if(r.top<innerHeight) el.classList.add("in"); }); },1200);
+})();
+
 </script>
 
 </body></html>
