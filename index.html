@@ -1340,4 +1340,13 @@ hashReady = true;
 
 </script>
 
+
+<script>
+document.addEventListener("click",function(e){
+  var a=e.target.closest&&e.target.closest('a[href*="wa.me"],a[href*="whatsapp"]');
+  if(!a||!window.goatcounter||!window.goatcounter.count) return;
+  try{ window.goatcounter.count({path:"clic-whatsapp",title:"Clic en WhatsApp",event:true}); }catch(err){}
+},true);
+</script>
+<script data-goatcounter="https://laceandwaves.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body></html>
