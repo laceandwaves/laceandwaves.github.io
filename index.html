@@ -1,5 +1,17 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Lace & Waves</title>
+<!doctype html><html><head><meta charset=utf8>
+<meta name="description" content="Moda femenina en Lima: vestidos, capas, trajes de baño, lencería y más. Pedidos por WhatsApp, pago con Yape o Plin y delivery.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lace &amp; Waves">
+<meta property="og:title" content="Lace &amp; Waves · Moda femenina en Lima">
+<meta property="og:description" content="Vestidos, capas, trajes de baño y más. Pide por WhatsApp · Yape o Plin · Delivery gratis desde S/ 300.">
+<meta property="og:url" content="https://laceandwaves.github.io/">
+<meta property="og:image" content="https://laceandwaves.github.io/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_PE">
+<meta name="twitter:card" content="summary_large_image">
+<title>Lace &amp; Waves · Moda femenina en Lima</title>
+<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400;1,6..96,500&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
@@ -213,6 +225,7 @@ section.sec{padding-block:44px 8px}
 .tile img.alt{opacity:0;transition:opacity .25s ease}
 @media (hover:hover) and (pointer:fine){.card:hover .tile img.alt{opacity:1}.card:hover .tile{box-shadow:var(--shadow)}}
 .badge{position:absolute;left:8px;top:8px;background:var(--coral);color:var(--coral-ink);border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700}
+.badge.nuevo{background:var(--accent);color:var(--accent-ink);letter-spacing:.02em}
 .badge.b2{left:auto;right:auto;top:8px}
 .fav{position:absolute;right:8px;top:8px;z-index:2;width:38px;height:38px;border-radius:999px;border:0;background:color-mix(in srgb,var(--surface) 88%,transparent);display:grid;place-items:center;box-shadow:0 1px 4px rgba(0,0,0,.15)}
 .fav .ic{width:19px;height:19px}
@@ -489,6 +502,7 @@ var CATS = [
   {id:"ropa",label:"Ropa",subs:[{id:"vestidos",label:"Vestidos"},{id:"blusas",label:"Blusas"},{id:"tops",label:"Tops y bralettes"},{id:"casacas",label:"Casacas"},{id:"capas",label:"Capas"},{id:"boleros",label:"Boleros y chales"},{id:"faldas",label:"Faldas"},{id:"pantalones",label:"Pantalones"}]},
   {id:"playa",label:"Playa",subs:[{id:"salidas",label:"Salidas de playa"},{id:"carteras",label:"Carteras de playa"}]},
   {id:"bolsos",label:"Carteras y mochilas",subs:[{id:"manos",label:"Carteras de mano"},{id:"mochilas",label:"Mochilas"}]},
+  {id:"nuevo",label:"Nuevo"},
   {id:"sale",label:"Sale"}
 ];
 var PARENT = {bikinis:"banos",conshort:"banos",enterizos:"banos",vestidosbano:"banos",lenceria:"lenceria",vestidos:"ropa",blusas:"ropa",faldas:"ropa",pantalones:"ropa",tops:"ropa",casacas:"ropa",boleros:"ropa",capas:"ropa",salidas:"playa",carteras:"playa",manos:"bolsos",mochilas:"bolsos"};
@@ -496,6 +510,7 @@ var LABEL = {bikinis:"Bikinis",conshort:"Bikinis Boyshort",enterizos:"Enterizos"
 function inCat(p){
   if(state.cat==="todo") return true;
   if(state.cat==="sale") return !!p.sale;
+  if(state.cat==="nuevo") return !!p.nuevo;
   if(PARENT[p.cat]!==state.cat) return false;
   if(!state.sub) return true;
   return state.cat==="lenceria" ? p.sub===state.sub : p.cat===state.sub;
@@ -602,8 +617,8 @@ var PRODUCTS = [
   {id:80,name:"Bikini Polka Peplum",code:"",cat:"bikinis",price:55,sizes:["L"],img:{L:["img/lunpep-1.jpg","img/lunpep-2.jpg"]},desc:"Bikini de dos piezas. Top halter con escote profundo, volante tipo peplum y detalle de cuentas de madera al frente, con amarres a los lados. Calzón con amarres laterales. Lunares blancos sobre negro."},
   {id:81,name:"Bikini Boyshort Marea Cruzada",code:"",cat:"conshort",price:62,sizes:["L"],img:{L:["img/bwshort-1.jpg","img/bwshort-2.jpg"]},desc:"Traje de baño de dos piezas con short. Top con escote en V y torcido al frente, tirantes cruzados regulables atrás. Short negro con cintura estampada y cordones laterales. Estampado de puntos en blanco y negro."},
   {id:82,name:"Tankini Halter Noir con Short",code:"",cat:"conshort",price:62,sizes:["L"],img:{L:["img/haltertank-1.jpg","img/haltertank-2.jpg"]},desc:"Traje de baño de dos piezas con short. Tankini halter negro con escote cruzado y amarre al cuello, más short con cordones laterales."},
-  {id:358,name:"Tankini Palmeras con Short",code:"",cat:"conshort",price:62,sizes:["M"],img:{M:["img/tk-palmeras-1.jpg","img/tk-palmeras-2.jpg"]},desc:"Traje de baño de dos piezas con short. Tankini de cuello redondo con fruncido y cordones a los costados, y tirantes cruzados regulables en la espalda, con palmeras negras sobre fondo blanco. Short negro liso. Incluye top y short."},
-  {id:359,name:"Bikini Boyshort Hibisco Lila",code:"",cat:"conshort",price:62,sizes:["M"],img:{M:["img/bs-hibisco-1.jpg"]},desc:"Traje de baño de dos piezas con short. Top negro de tirantes anchos regulables, y short negro de tiro alto con cintura estampada de flores lila y blancas y cordones laterales. Incluye top y short."},
+  {id:358,nuevo:true,name:"Tankini Palmeras con Short",code:"",cat:"conshort",price:62,sizes:["M"],img:{M:["img/tk-palmeras-1.jpg","img/tk-palmeras-2.jpg"]},desc:"Traje de baño de dos piezas con short. Tankini de cuello redondo con fruncido y cordones a los costados, y tirantes cruzados regulables en la espalda, con palmeras negras sobre fondo blanco. Short negro liso. Incluye top y short."},
+  {id:359,nuevo:true,name:"Bikini Boyshort Hibisco Lila",code:"",cat:"conshort",price:62,sizes:["M"],img:{M:["img/bs-hibisco-1.jpg"]},desc:"Traje de baño de dos piezas con short. Top negro de tirantes anchos regulables, y short negro de tiro alto con cintura estampada de flores lila y blancas y cordones laterales. Incluye top y short."},
   {id:83,name:"Enterizo Short Noir",code:"",cat:"enterizos",price:63,sizes:["L"],img:{L:["img/romper-1.jpg","img/romper-2.jpg"]},desc:"Traje de baño enterizo. Enterizo corto con short, escote con torcido, tirantes de volante regulables y fruncido a los lados. Negro liso."},
   {id:84,name:"Enterizo Red Velvet",code:"",cat:"enterizos",price:63,sizes:["L"],img:{L:["img/rojo-1.jpg","img/rojo-2.jpg"]},desc:"Traje de baño enterizo. Enterizo con escote en corazón y torcido al frente, tirantes anchos con volante. Rojo liso."},
   {id:85,name:"Enterizo Polka Marino",code:"",cat:"enterizos",price:63,sizes:["L"],img:{L:["img/marinolun-1.jpg","img/marinolun-2.jpg"]},desc:"Traje de baño enterizo. Enterizo halter con escote profundo en V y espalda abierta. Lunares blancos sobre azul marino."},
@@ -872,19 +887,19 @@ var PRODUCTS = [
   {id:322,name:"Capa Luna",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:[IMG_V6,IMG_V7]},desc:"Capa de gasa con caída asimétrica y un solo hombro descubierto, ideal para combinar con jeans o vestidos. No incluye top: se vende solo la capa."},
   {id:326,name:"Capa Destello Camel",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:[IMG_D4]},desc:"Capa ligera y translúcida con delicado brillo, mangas amplias y borde ondulado, para llevar sobre un solo hombro o ambos. No incluye top: se vende solo la capa."},
   {id:328,name:"Capa Peonía",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:[IMG_PEO]},desc:"Capa corta oversize de gasa ligera, blanca con grandes flores grises estampadas y mangas amplias. No incluye top: se vende solo la capa."},
-  {id:345,name:"Capa Mariposa Negro",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-mariposa-negro.jpg"]},desc:"Capa corta oversize de gasa ligera con cuello redondo y mangas amplias tipo ala que caen sobre los brazos. No incluye top: se vende solo la capa."},
-  {id:346,name:"Capa Mariposa Durazno",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-mariposa-durazno.jpg"]},desc:"Capa corta oversize de gasa ligera con cuello redondo y mangas amplias tipo ala que caen sobre los brazos. No incluye top: se vende solo la capa."},
-  {id:347,name:"Capa Mariposa Blanco",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-mariposa-blanco.jpg"]},desc:"Capa corta oversize de gasa ligera con cuello redondo y mangas amplias tipo ala que caen sobre los brazos. No incluye top: se vende solo la capa."},
-  {id:348,name:"Capa Mariposa Vino",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-mariposa-vino.jpg"]},desc:"Capa corta oversize de gasa ligera con cuello redondo y mangas amplias tipo ala que caen sobre los brazos. No incluye top: se vende solo la capa."},
-  {id:349,name:"Capa Medianoche",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-medianoche.jpg"]},desc:"Capa corta oversize de gasa negra, para llevar con un hombro descubierto o con cuello redondo, con mangas amplias y mucho vuelo. No incluye top: se vende solo la capa."},
-  {id:350,name:"Capa Lunares Negro",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-lunares-negro.jpg"]},desc:"Capa oversize de gasa transparente con lunares, cuello redondo, mangas amplias con abertura y caída suelta. No incluye top: se vende solo la capa."},
-  {id:351,name:"Capa Lunares Blanco",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-lunares-blanco.jpg"]},desc:"Capa oversize de gasa transparente con lunares, cuello redondo, mangas amplias con abertura y caída suelta. No incluye top: se vende solo la capa."},
-  {id:352,name:"Capa Brillo Cobre",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-brillo-cobre.jpg"]},desc:"Capa tipo poncho oversize de tejido calado con brillo metálico, caída en punta y borde ondulado. No incluye top: se vende solo la capa."},
-  {id:353,name:"Capa Brillo Champagne",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-brillo-champagne.jpg"]},desc:"Capa tipo poncho oversize de tejido calado con brillo metálico, caída en punta y borde ondulado. No incluye top: se vende solo la capa."},
-  {id:354,name:"Capa Brisa Chocolate",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-brisa-chocolate.jpg"]},desc:"Capa oversize de gasa ligera con cuello redondo, mangas amplias y caída asimétrica más larga a un costado. No incluye top: se vende solo la capa."},
-  {id:355,name:"Capa Brisa Negro",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-brisa-negro.jpg"]},desc:"Capa oversize de gasa ligera con cuello redondo, mangas amplias y caída asimétrica más larga a un costado. No incluye top: se vende solo la capa."},
-  {id:356,name:"Capa Aura Blanco",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-aura-blanco.jpg"]},desc:"Capa oversize de gasa con escote asimétrico de un hombro, mangas amplias y borde en punta al frente. No incluye top: se vende solo la capa."},
-  {id:357,name:"Capa Aura Negro",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-aura-negro.jpg"]},desc:"Capa oversize de gasa con escote asimétrico de un hombro, mangas amplias y borde en punta al frente. No incluye top: se vende solo la capa."},
+  {id:345,nuevo:true,name:"Capa Mariposa Negro",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-mariposa-negro.jpg"]},desc:"Capa corta oversize de gasa ligera con cuello redondo y mangas amplias tipo ala que caen sobre los brazos. No incluye top: se vende solo la capa."},
+  {id:346,nuevo:true,name:"Capa Mariposa Durazno",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-mariposa-durazno.jpg"]},desc:"Capa corta oversize de gasa ligera con cuello redondo y mangas amplias tipo ala que caen sobre los brazos. No incluye top: se vende solo la capa."},
+  {id:347,nuevo:true,name:"Capa Mariposa Blanco",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-mariposa-blanco.jpg"]},desc:"Capa corta oversize de gasa ligera con cuello redondo y mangas amplias tipo ala que caen sobre los brazos. No incluye top: se vende solo la capa."},
+  {id:348,nuevo:true,name:"Capa Mariposa Vino",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-mariposa-vino.jpg"]},desc:"Capa corta oversize de gasa ligera con cuello redondo y mangas amplias tipo ala que caen sobre los brazos. No incluye top: se vende solo la capa."},
+  {id:349,nuevo:true,name:"Capa Medianoche",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-medianoche.jpg"]},desc:"Capa corta oversize de gasa negra, para llevar con un hombro descubierto o con cuello redondo, con mangas amplias y mucho vuelo. No incluye top: se vende solo la capa."},
+  {id:350,nuevo:true,name:"Capa Lunares Negro",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-lunares-negro.jpg"]},desc:"Capa oversize de gasa transparente con lunares, cuello redondo, mangas amplias con abertura y caída suelta. No incluye top: se vende solo la capa."},
+  {id:351,nuevo:true,name:"Capa Lunares Blanco",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-lunares-blanco.jpg"]},desc:"Capa oversize de gasa transparente con lunares, cuello redondo, mangas amplias con abertura y caída suelta. No incluye top: se vende solo la capa."},
+  {id:352,nuevo:true,name:"Capa Brillo Cobre",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-brillo-cobre.jpg"]},desc:"Capa tipo poncho oversize de tejido calado con brillo metálico, caída en punta y borde ondulado. No incluye top: se vende solo la capa."},
+  {id:353,nuevo:true,name:"Capa Brillo Champagne",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-brillo-champagne.jpg"]},desc:"Capa tipo poncho oversize de tejido calado con brillo metálico, caída en punta y borde ondulado. No incluye top: se vende solo la capa."},
+  {id:354,nuevo:true,name:"Capa Brisa Chocolate",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-brisa-chocolate.jpg"]},desc:"Capa oversize de gasa ligera con cuello redondo, mangas amplias y caída asimétrica más larga a un costado. No incluye top: se vende solo la capa."},
+  {id:355,nuevo:true,name:"Capa Brisa Negro",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-brisa-negro.jpg"]},desc:"Capa oversize de gasa ligera con cuello redondo, mangas amplias y caída asimétrica más larga a un costado. No incluye top: se vende solo la capa."},
+  {id:356,nuevo:true,name:"Capa Aura Blanco",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-aura-blanco.jpg"]},desc:"Capa oversize de gasa con escote asimétrico de un hombro, mangas amplias y borde en punta al frente. No incluye top: se vende solo la capa."},
+  {id:357,nuevo:true,name:"Capa Aura Negro",code:"",cat:"capas",price:38,sizes:["Oversize"],img:{Oversize:["img/cp-aura-negro.jpg"]},desc:"Capa oversize de gasa con escote asimétrico de un hombro, mangas amplias y borde en punta al frente. No incluye top: se vende solo la capa."},
   {id:329,name:"Top Reptil Negro",code:"",cat:"tops",sale:true,price:31,sizes:["S","M","L"],img:{S:[IMG_T5,IMG_T1,IMG_T3],M:[IMG_T5,IMG_T1,IMG_T3],L:[IMG_T5,IMG_T1,IMG_T3]},desc:"Top halter de cuello alto con estampado brillante tipo reptil, espalda descubierta y frunces en la cintura. Se vende solo el top."},
   {id:330,name:"Top Cascada Negro",code:"",cat:"tops",sale:true,price:31,sizes:["S","M","L"],img:{S:[IMG_T4,IMG_T2],M:[IMG_T4,IMG_T2],L:[IMG_T4,IMG_T2]},desc:"Top halter negro con escote cascada, tirita decorativa al centro y espalda descubierta. Se vende solo el top."},
   {id:331,name:"Top Brillos Negro",code:"",cat:"tops",sale:true,price:31,sizes:["S","M","L"],img:{S:[IMG_T6],M:[IMG_T6],L:[IMG_T6]},desc:"Top halter negro con escote cascada y pequeños destellos plateados, espalda descubierta con cierre al cuello. Se vende solo el top."},
@@ -994,6 +1009,7 @@ function visible(){
   var seen = {}, cnt = {};
   all.forEach(function(p){ if(p.group) cnt[p.group] = (cnt[p.group]||0)+1; });
   var list = all.slice().reverse().filter(function(p){ if(!p.group) return true; if(seen[p.group]) return false; seen[p.group] = 1; return true; });
+  if(state.sort==="new") list.sort(function(a,b){return (b.nuevo?1:0)-(a.nuevo?1:0)});
   if(state.sort==="asc") list.sort(function(a,b){return a.price-b.price});
   if(state.sort==="desc") list.sort(function(a,b){return b.price-a.price});
   return {list:list, cnt:cnt};
@@ -1001,7 +1017,7 @@ function visible(){
 function catCount(id){
   var seen = {}, n = 0;
   PRODUCTS.forEach(function(p){
-    var ok = id==="sale" ? !!p.sale : PARENT[p.cat]===id;
+    var ok = id==="sale" ? !!p.sale : id==="nuevo" ? !!p.nuevo : PARENT[p.cat]===id;
     if(!ok) return;
     if(p.group){ if(seen[p.group]) return; seen[p.group]=1; }
     n++;
@@ -1021,7 +1037,7 @@ function navBar(){
   Array.prototype.forEach.call(nb.querySelectorAll("[data-navcat]"), function(b){ b.setAttribute("aria-pressed", String(!state.fav && b.dataset.navcat===state.cat)); });
 }
 var hashReady = false;
-var ALIAS = {capa:"capas",chales:"boleros",polos:"blusas",polo:"blusas",palazos:"pantalones",palazo:"pantalones",pantalon:"pantalones",trajes:"banos",bano:"banos",banos:"banos",carteras:"bolsos",oferta:"sale",ofertas:"sale",falda:"faldas",vestido:"vestidos",bikini:"bikinis",top:"tops",salida:"salidas"};
+var ALIAS = {capa:"capas",chales:"boleros",polos:"blusas",polo:"blusas",palazos:"pantalones",palazo:"pantalones",pantalon:"pantalones",trajes:"banos",bano:"banos",banos:"banos",carteras:"bolsos",oferta:"sale",ofertas:"sale",nuevos:"nuevo",novedades:"nuevo",nueva:"nuevo",nuevas:"nuevo",falda:"faldas",vestido:"vestidos",bikini:"bikinis",top:"tops",salida:"salidas"};
 function hashFor(){ return state.cat==="todo" ? "" : (state.sub||state.cat); }
 function syncHash(){
   if(!hashReady) return;
@@ -1058,7 +1074,7 @@ function card(p,cnt,mini){
     var dots = PRODUCTS.filter(function(q){return q.group===p.group}).slice(0,6).map(function(q){return '<i style="background:'+q.dot+'"></i>'}).join("");
     tallas = '<span class="dots" title="'+cnt[p.group]+' '+p.gplural+'">'+dots+'</span>';
   } else tallas = '<span>'+(p.sizes[0]==="Única" ? "Talla única" : p.sizes[0]==="Oversize" ? "Oversize" : (p.sizes.length===1 ? "Talla "+p.sizes[0] : p.sizes.join(" · ")))+'</span>';
-  var badge = p.sale ? '<span class="badge">Sale</span>' : '';
+  var badge = p.sale ? '<span class="badge">Sale</span>' : p.nuevo ? '<span class="badge nuevo">Nuevo</span>' : '';
   return '<article class="card"><button type="button" class="cardlink press" data-id="'+p.id+'" aria-label="Ver '+esc(title(p))+'">'+
     '<div style="position:relative">'+tile(p,show,0,true)+badge+'</div><h3>'+esc(title(p))+'</h3><div class="meta">'+tallas+'<span class="price">'+money(p.price)+'</span></div></button>'+
     (mini ? '' : '<button type="button" class="fav press" data-fav="'+p.id+'" aria-pressed="'+fav+'" aria-label="'+(fav?"Quitar de favoritos":"Guardar en favoritos")+'"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.1A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 7.5 2.8c0 5.5-7.5 10.1-7.5 10.1z"/></svg></button>')+'</article>';
