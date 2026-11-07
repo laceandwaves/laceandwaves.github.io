@@ -434,7 +434,12 @@ body.lock{overflow:hidden}
   <div class="pol">
     <div><h3>Medios de pago</h3><ul><li><b>Yape / Plin:</b> 927 420 093</li><li><b>Link de pago:</b> aceptamos todas las tarjetas de débito y crédito con un adicional de 5%.</li></ul></div>
     <div><h3>Descuentos</h3><p>Por compras de más de 3 prendas te damos un descuento. Escríbenos por WhatsApp y te lo aplicamos en tu pedido.</p></div>
-    <div><h3>Cambios</h3><p>En los cambios de talla, el cliente asume el costo del delivery.</p></div>
+    <div id="cambios"><h3>Cambios</h3><ul>
+      <li><b>Cambio de talla:</b> dentro de las 48 horas de recibido tu pedido. La prenda debe estar sin usar, sin lavar y con etiquetas. El delivery de ida y vuelta lo asume la clienta. Sujeto a stock; si no hay tu talla, te damos un vale para otra prenda.</li>
+      <li><b>Ropa de baño y lencería:</b> no tienen cambio por higiene. Revisa la tabla de medidas o escríbenos antes de comprar.</li>
+      <li><b>Prenda con falla:</b> avísanos dentro de las 24 horas con foto o video y lo solucionamos sin costo para ti.</li>
+      <li>No hacemos devoluciones de dinero por cambio de talla.</li>
+    </ul></div>
   </div>
 </section>
 
@@ -474,7 +479,8 @@ body.lock{overflow:hidden}
     <details><summary>¿Hay descuento por llevar varias prendas?</summary><p>Sí. Por compras de más de 3 prendas te damos un descuento. Escríbenos por WhatsApp con tu pedido y te lo aplicamos.</p></details>
     <details><summary>¿Envían a provincias?</summary><p>Sí, enviamos a todo el Perú por Shalom. Pagas por adelantado la prenda + S/ 2 de embalaje, y el envío lo pagas directamente en la agencia Shalom cuando recoges tu pedido.</p></details>
     <details><summary>¿Hay delivery gratis?</summary><p>Sí, en Lima para compras mayores a S/300. En compras menores, el delivery cuesta S/ 10, S/ 15 o S/ 20 a 25 según la zona de tu distrito. Puedes ver tu zona en el <a href="https://maps.app.goo.gl/nKY6KjccSMZ3Vx4n6" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">mapa de zonas</a> o te la confirmamos por WhatsApp.</p></details>
-    <details><summary>¿Puedo cambiar de talla?</summary><p>Sí, escríbenos por WhatsApp. En los cambios de talla, el cliente asume el costo del delivery.</p></details>
+    <details><summary>¿Puedo cambiar de talla?</summary><p>Sí, dentro de las 48 horas de recibido tu pedido, con la prenda sin usar, sin lavar y con etiquetas. El delivery de ida y vuelta lo asume la clienta. Ropa de baño y lencería no tienen cambio por higiene. Antes de comprar, revisa la tabla de medidas o escríbenos tus medidas por WhatsApp y te ayudamos a elegir.</p></details>
+    <details><summary>¿Y si mi prenda llega con alguna falla?</summary><p>Revisamos cada prenda antes de enviarla. Si aun así llega con alguna falla, avísanos por WhatsApp dentro de las 24 horas con una foto o video y lo solucionamos sin costo para ti.</p></details>
     <details><summary>No encuentro mi talla, ¿qué hago?</summary><p>Escríbenos por WhatsApp con el nombre de la prenda y tu talla, y consultamos disponibilidad.</p></details>
     <details><summary>¿Por qué algunas prendas muestran varios colores o diseños?</summary><p>Cuando un mismo modelo viene en distintos colores o estampados, lo reunimos en una sola tarjeta. Entra a la ficha y elige el que te guste; cada uno puede tener tallas distintas.</p></details>
   </div>
@@ -1042,7 +1048,7 @@ function syncHash(){
 }
 function applyHash(){
   var h = (location.hash||"").slice(1).toLowerCase(); if(!h) return false;
-  var SECS = {testimonios:"testimonios",opiniones:"testimonios",envios:"envios",entregas:"envios",pago:"envios",pagos:"envios",comprar:"envios"};
+  var SECS = {cambios:"envios",devoluciones:"envios",testimonios:"testimonios",opiniones:"testimonios",envios:"envios",entregas:"envios",pago:"envios",pagos:"envios",comprar:"envios"};
   if(SECS[h]){ [350,1200].forEach(function(ms){ setTimeout(function(){ var el=$(SECS[h]); if(el) el.scrollIntoView({block:"start"}); },ms); }); return false; }
   h = ALIAS[h] || h;
   var found = false;
@@ -1218,7 +1224,7 @@ function waLink(){
     var p = byId(l.id), t = l.size==="Única" ? "talla única" : "talla "+l.size;
     return "- "+l.qty+" x "+p.name+" ("+t+") - "+money(p.price*l.qty);
   });
-  var msg = "Hola Lace & Waves, quiero hacer este pedido:\n"+lines.join("\n")+"\nTotal: "+money(total())+"\nMi nombre y dirección de envío:";
+  var msg = "Hola Lace & Waves, quiero hacer este pedido:\n"+lines.join("\n")+"\nTotal: "+money(total())+"\nConfirmo mis tallas y conozco la política de cambios.\nMi nombre y dirección de envío:";
   return waBase()+"?text="+encodeURIComponent(msg);
 }
 function cart(){
