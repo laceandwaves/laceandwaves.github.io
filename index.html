@@ -225,6 +225,7 @@ section.sec{padding-block:44px 8px}
 .tile img.alt{opacity:0;transition:opacity .25s ease}
 @media (hover:hover) and (pointer:fine){.card:hover .tile img.alt{opacity:1}.card:hover .tile{box-shadow:var(--shadow)}}
 .badge{position:absolute;left:8px;top:8px;background:var(--coral);color:var(--coral-ink);border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700}
+.was{color:var(--muted);font-weight:400;margin-right:4px}
 .badge.ultima{background:#B45309;color:#fff}
 .badge.nuevo{background:var(--accent);color:var(--accent-ink);letter-spacing:.02em}
 .badge.b2{left:auto;right:auto;top:8px}
@@ -819,7 +820,7 @@ var PRODUCTS = [
   {id:251,name:"Falda Sahara",code:"",cat:"salidas",price:48,sizes:["S","M","L"],img:{S:["img/sal-fsah-1.jpg"]},desc:"Falda larga playera semitransparente de cintura elástica con abertura al frente, para llevar sobre el bikini. Se vende solo la falda, no incluye bikini."},
   {id:252,name:"Kimono Alhambra",code:"",cat:"salidas",price:49.9,sizes:["Oversize"],img:{"Oversize":["img/sal-kalh-1.jpg","img/sal-kalh-2.jpg"]},desc:"Kimono largo de encaje negro con motivos florales y bordes geométricos, abierto al frente, escote en V y mangas anchas, para llevar sobre el bikini. Talla oversize. Se vende solo la prenda, no incluye bikini."},
   {id:253,name:"Kimono Laurel",code:"",cat:"salidas",price:49.9,sizes:["Oversize"],img:{"Oversize":["img/sal-klau-1.jpg","img/sal-klau-2.jpg"]},desc:"Kimono de gasa blanca con relieve de hojas, escote en V profundo, cordón para amarrar en la cintura y mangas tres cuartos con vuelo. Talla oversize. Se vende solo la prenda, no incluye bikini."},
-  {id:254,name:"Salida Anochecer",code:"",cat:"salidas",price:49.9,sizes:["Oversize"],img:{"Oversize":["img/sal-anoc-1.jpg","img/sal-anoc-2.jpg"]},desc:"Salida de playa corta en gasa negra semitransparente con escote profundo en V, espalda descubierta, cintura elástica y mangas amplias. Talla oversize. Se vende solo la prenda, no incluye bikini."},
+  {id:254,name:"Salida Anochecer",code:"",cat:"salidas",sale:true,was:49.9,price:45,sizes:["Oversize"],img:{"Oversize":["img/sal-anoc-1.jpg","img/sal-anoc-2.jpg"]},desc:"Salida de playa corta en gasa negra semitransparente con escote profundo en V, espalda descubierta, cintura elástica y mangas amplias. Talla oversize. Se vende solo la prenda, no incluye bikini."},
   {id:255,name:"Salida Marina",code:"",cat:"salidas",price:40,sizes:["Única"],img:{"Única":["img/sal-marina-1.jpg","img/sal-marina-2.jpg"]},desc:"Vestido corto de playa en malla semitransparente negra, de manga corta y cuello redondo, con fruncido y lazos ajustables a los costados. No incluye bikini."},
   {id:256,name:"Vestido Marfil",code:"",cat:"salidas",price:55,sizes:["M","L"],img:{M:["img/vd-marfil-1.jpg","img/vd-marfil-2.jpg"]},desc:"Vestido largo de playa en tejido texturizado color marfil, con tirantes con volante, aberturas al pecho y cintura, espalda descubierta con amarres y abertura en la falda. Se vende solo el vestido, no incluye bikini."},
   {id:257,name:"Vestido Marinero",code:"",cat:"salidas",price:55,sizes:["M","L"],img:{M:["img/vd-marin-1.jpg","img/vd-marin-2.jpg"]},desc:"Vestido largo de punto a rayas blancas y negras, escote halter con tirantes cruzados, ajustado al cuerpo y con abertura lateral. Se vende solo el vestido, no incluye bikini."},
@@ -1082,7 +1083,7 @@ function card(p,cnt,mini){
   } else tallas = '<span>'+(p.sizes[0]==="Única" ? "Talla única" : p.sizes[0]==="Oversize" ? "Oversize" : (p.sizes.length===1 ? "Talla "+p.sizes[0] : p.sizes.join(" · ")))+'</span>';
   var badge = p.sale ? '<span class="badge">Sale</span>' : p.ultima ? '<span class="badge ultima">Última unidad</span>' : p.nuevo ? '<span class="badge nuevo">Nuevo</span>' : '';
   return '<article class="card"><button type="button" class="cardlink press" data-id="'+p.id+'" aria-label="Ver '+esc(title(p))+'">'+
-    '<div style="position:relative">'+tile(p,show,0,true)+badge+'</div><h3>'+esc(title(p))+'</h3><div class="meta">'+tallas+'<span class="price">'+money(p.price)+'</span></div></button>'+
+    '<div style="position:relative">'+tile(p,show,0,true)+badge+'</div><h3>'+esc(title(p))+'</h3><div class="meta">'+tallas+'<span class="price">'+(p.was?'<s class="was">'+money(p.was)+'</s> ':'')+money(p.price)+'</span></div></button>'+
     (mini ? '' : '<button type="button" class="fav press" data-fav="'+p.id+'" aria-pressed="'+fav+'" aria-label="'+(fav?"Quitar de favoritos":"Guardar en favoritos")+'"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.1A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 7.5 2.8c0 5.5-7.5 10.1-7.5 10.1z"/></svg></button>')+'</article>';
 }
 function grid(){
@@ -1185,7 +1186,7 @@ function renderProduct(){
   var code = p.code ? '<div class="lab">Cód. '+esc(p.code)+'</div>' : '';
   $("psheet").innerHTML = '<div class="sheet-head"><span class="crumb">'+esc(catName(p))+'</span><button class="x press" type="button" data-close aria-label="Cerrar"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>'+
     '<div class="pd"><div class="gal"><div class="stage" style="--h:'+HUE[p.cat]+'">'+main+'</div>'+thumbs+'</div>'+
-    '<div class="info"><div><h2>'+esc(title(p))+'</h2><div class="price" style="margin-top:6px">'+money(p.price)+'</div>'+code+'</div>'+
+    '<div class="info"><div><h2>'+esc(title(p))+'</h2><div class="price" style="margin-top:6px">'+(p.was?'<s class="was">'+money(p.was)+'</s> ':'')+money(p.price)+'</div>'+code+'</div>'+
     swatches+sizeBlock+callout+'<p class="desc">'+esc(d.main)+'</p>'+
     '<button type="button" class="primary press" data-add>Agregar al carrito · '+money(p.price)+'</button>'+
     '<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><button type="button" class="ghost" data-fav="'+p.id+'" aria-pressed="'+fav+'">'+(fav?"Quitar de favoritos":"Guardar en favoritos")+'</button>'+
