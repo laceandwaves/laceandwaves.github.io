@@ -1053,7 +1053,7 @@ function applyHash(){
     if(c.id===h){ state.cat=c.id; state.sub=null; found=true; return; }
     (c.subs||[]).forEach(function(x){ if(!found && x.id===h){ state.cat=c.id; state.sub=x.id; found=true; } });
   });
-  if(found){ state.fav=false; state.q=""; chips(); grid(); favBadge(); }
+  if(found){ state.fav=false; state.q=""; state.size=null; chips(); grid(); favBadge(); }
   return found;
 }
 window.addEventListener("hashchange", function(){ if(applyHash()) toCatalog(); });
@@ -1301,15 +1301,15 @@ document.addEventListener("click", function(e){
   if(t.hasAttribute("data-close")){ closeAll(); if(t.dataset.go==="catalogo") toCatalog(); return; }
   if(t.id==="scrim"){ closeAll(); return; }
   if(t.id==="menubtn"){ openMenu(); return; }
-  if(t.dataset.megacat){ closeAll(); state.cat=t.dataset.megacat; state.sub=t.dataset.megasub||null; state.fav=false; state.q=""; $("q").value=""; chips(); grid(); favBadge(); toCatalog(); return; }
+  if(t.dataset.megacat){ closeAll(); state.cat=t.dataset.megacat; state.sub=t.dataset.megasub||null; state.size=null; state.fav=false; state.q=""; $("q").value=""; chips(); grid(); favBadge(); toCatalog(); return; }
   if(t.dataset.megasize){ closeAll(); state.size=t.dataset.megasize; chips(); grid(); toCatalog(); return; }
   if(t.id==="cartbtn" || t.hasAttribute("data-opencart")){ cart(); return; }
   if(t.id==="favbtn"){ state.fav = !state.fav; state.cat="todo"; state.sub=null; chips(); grid(); favBadge(); toCatalog(); return; }
   if(t.hasAttribute("data-reset")){ state.cat="todo"; state.sub=null; state.size=null; state.q=""; state.fav=false; $("q").value=""; chips(); grid(); favBadge(); return; }
   if(t.dataset.hsize){ state.size = state.size===t.dataset.hsize ? null : t.dataset.hsize; chips(); grid(); toCatalog(); return; }
-  if(t.dataset.navcat){ state.cat = t.dataset.navcat; state.sub = null; state.fav=false; state.q=""; $("q").value=""; chips(); grid(); favBadge(); toCatalog(); return; }
-  if(t.dataset.tilecat){ state.cat = t.dataset.tilecat; state.sub = null; state.fav=false; chips(); grid(); favBadge(); toCatalog(); return; }
-  if(t.dataset.cat){ state.cat = t.dataset.cat; state.sub = null; chips(); grid(); return; }
+  if(t.dataset.navcat){ state.cat = t.dataset.navcat; state.sub = null; state.size = null; state.fav=false; state.q=""; $("q").value=""; chips(); grid(); favBadge(); toCatalog(); return; }
+  if(t.dataset.tilecat){ state.cat = t.dataset.tilecat; state.sub = null; state.size = null; state.fav=false; chips(); grid(); favBadge(); toCatalog(); return; }
+  if(t.dataset.cat){ state.cat = t.dataset.cat; state.sub = null; state.size = null; chips(); grid(); return; }
   if(t.hasAttribute("data-sub")){ state.sub = t.dataset.sub || null; chips(); grid(); if($("catalogo").getBoundingClientRect().top > innerHeight*0.4) toCatalog(); return; }
   if(t.hasAttribute("data-size")){ state.size = t.dataset.size || null; chips(); grid(); return; }
   if(t.dataset.tbl){ tblKind = t.dataset.tbl; renderTable(); return; }
